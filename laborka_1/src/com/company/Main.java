@@ -24,58 +24,35 @@ public class Main {
 
     static void countUnique()
     {
-        System.out.println("Wpisuj liczby,wpisz dowolny znak niebędący liczba aby przerwać");
+        List<Integer> liczby=new ArrayList<>();
+        Scanner scan=new Scanner(System.in);
+        System.out.println("Podaj 10 liczb:");
 
-        boolean flag=true;
-        HashSet hashSet=new HashSet();
-        Scanner scanner=new Scanner(System.in);
-
-        do {
-            try
-            {
-                hashSet.add(scanner.nextInt());
-            }catch (Exception e)
-            {
-                flag=false;
+        for(int i=0;i<10;i++){
+            liczba=scan.nextInt();
+            liczby.add(liczba);
+        }
+        for(int a:liczby){
+            if(liczby.indexOf(a)==liczby.lastIndexOf(a)){
+                licznik++;
             }
-
-        }while (flag);
-        System.out.println("wpisałeś "+hashSet.size()+" unikalnych liczb");
-
+        }
+        System.out.println("Liczba unikatowych elementow: "+licznik);
     }
 
 
     static void countSequence()
     {
-        Scanner scanner=new Scanner(System.in);
-        System.out.println("wpisz ciag 0 i 1");
-        String ciag=scanner.nextLine();
-
-        char[] chars=ciag.toCharArray();
-
-        boolean flaga_1=false;
-        boolean flaga_2=false;
-        int licznik=0;
-
-        for(int i=0;i<chars.length;i++)
-        {
-
-            if(chars[i]=='0' && flaga_1==true)
-            {
-                flaga_2=true;
-            }
-            if(chars[i]=='1' && flaga_2==true)
-            {
-                licznik++;
-                flaga_2=false;
-
-            }else if(chars[i]=='1' ) {
-                flaga_1 = true;
-            }
-
-        }
-
-        System.out.println(licznik+ " sekwencji");
+        Scanner scan=new Scanner(System.in);
+        System.out.println("Podaj ciag zer oraz jedynek:");
+        String sequence=scan.nextLine();
+        System.out.println(sequence);
+        Pattern pattern=Pattern.compile("10+1");
+        Matcher matcher=pattern.matcher(sequence);
+        while(matcher.find(pomoc)) {
+            licznik++;
+            pomoc = matcher.end() - 1;
+        }System.out.println("Liczba dziur to: "+licznik);
 
     }
 
