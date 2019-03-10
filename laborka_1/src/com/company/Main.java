@@ -84,56 +84,37 @@ public class Main {
     {
 
 
+        Scanner wpisz=new Scanner(System.in);
+        Set<Integer> zbiorA=new HashSet<Integer>();
+        Set<Integer>zbiorB=new HashSet<Integer>();
+        
+        System.out.println("Podaj zbior A (5 liczb): ");
+        
+        for(int i=0;i<5;i++){
+            zbiorA.add(wpisz.nextInt());
+        }
+        System.out.println("Podaj zbior B (5 liczb) ");
+        
+        for(int j=0;j<5;j++){
+            zbiorB.add(wpisz.nextInt());
+        }
+        
+        System.out.println("Podane zbiory to: \n"+zbiorA +"\n"+zbiorB);
+        
+        Set<Integer>suma=new HashSet<>(zbiorA);
+        suma.addAll(zbiorB);
 
-        boolean flag=true;
-        Scanner scanner=new Scanner(System.in);
-        Scanner scanner2=new Scanner(System.in);
+        Set<Integer>common=new HashSet<>(zbiorA);
+        common.retainAll(zbiorB);
 
-        List<Integer> zbiór_A=new ArrayList<>();
-        List<Integer> zbiór_B=new ArrayList<>();
-        HashSet<Integer> suma=new HashSet<>();
-        List<Integer> roznica=new ArrayList<>();
-        List<Integer> czescWspolna=new ArrayList<>();
+        Set<Integer> difference=new HashSet<>(zbiorA);
+        difference.removeAll(zbiorB);
 
+        Set<Integer>symmetrical_difference=new HashSet<>(zbiorA);
+        symmetrical_difference.addAll(zbiorB);
+        symmetrical_difference.removeAll(common);
 
-
-        System.out.println("zbiór A:");
-
-        do {
-            try
-            {
-                zbiór_A.add(scanner.nextInt());
-            }catch (Exception e)
-            {
-                flag=false;
-            }
-
-        }while (flag);
-
-flag=true;
-
-        System.out.println("zbiór B:");
-
-        do {
-
-            try
-            {
-
-
-                zbiór_B.add(scanner2.nextInt());
-
-            }catch (Exception ee)
-            {
-
-                flag=false;
-            }
-
-        }while (flag);
-
-
-
-    for ()
-
+        System.out.println("Suma zbiorów to: "+suma+"\nRoznica zbiorow to: "+ difference+"\nCzesc wspolna zbiorow to: "+common+"\nRoznica symetryczna zbiorow to: "+symmetrical_difference);
 
     }
 }
